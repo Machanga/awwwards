@@ -28,8 +28,11 @@
         </form>
       </div>
       <!-- search form end -->
+      <button><a class="nav-link" href="{% url 'post_project'%}">Post
+          </a></button>
     <div class="col-sm-6 col-md-6 navbar-right">
             {% if user.is_authenticated %}
+            
             <ul>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Profile

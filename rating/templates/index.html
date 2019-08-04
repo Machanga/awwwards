@@ -1,5 +1,24 @@
-{% extends 'base.html'%}
-
+{% extends 'base.html' %}
+{% load bootstrap3 %}
 {% block content %}
-{{block.super}}
+<div class="container-fluid">
+  <h3 class="text-center header">Projects</h3>
+  <hr class="text-muted">
+  <div class="projects row">
+    {% for project in projects %}
+    <div class=" col-md-3">
+      <img class="landing-page" src="{{project.image.url}}" alt="project landing page">
+      <div class="project-text">
+        <h3 class="text-center">{{title}}</h3>
+        <div class="d-flex justify-content-between">
+          <a href="{% url 'project' project.pk %}" class="btn">View details</a>
+          <a target="_blank" href="{{project.link}}" class="btn">Visit Site</a>
+        </div>
+        <p class="text-center">By: <span>{{project.user.username}}</span></p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
 {% endblock %}
