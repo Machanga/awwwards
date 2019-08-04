@@ -1,0 +1,6 @@
+/virtual
+.env
+*.pyc
+/.vscode
+__pycache__/
+db.site3
