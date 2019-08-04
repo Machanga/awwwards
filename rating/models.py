@@ -1,5 +1,17 @@
 from django.db import models
 
+CHOICES=[
+    (1, '1'),
+    (2, '2'),
+    (3, '3'),
+    (4, '4'),
+    (5, '5'),
+    (6, '6'),
+    (7, '7'),
+    (8, '8'),
+    (9, '9'),
+    (10, '10')
+]
 # Create your models here.
 class Project(models.Model):
     '''
@@ -18,3 +30,9 @@ class Profile(models.Model):
     bio = models.CharField(max_length = 500)
     projects = models.ForeignKey(Project)
     contact = models.CharField(max_length=100)
+
+class ratings(models.Model):
+    design=models.IntegerField(choices=CHOICES)
+    usability = models.IntegerField(choices=CHOICES)
+    content = models.IntegerField(choices=CHOICES)
+    project = models.ForeignKey(Project)
