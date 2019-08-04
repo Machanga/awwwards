@@ -8,30 +8,27 @@
 <!--Navbar -->
 <nav class="mb-1 navbar navbar-expand-lg navbar-light sticky-top">
     <a  id="icons" class=" navbar-brand" href="{% url 'index'%}" style="font-size:30px"> <strong>Awwwards</strong> </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
-      aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    
     <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'post'%}">Post
+          <a class="nav-link" href="">Post
           </a>
         </li>
       </ul>
       <div class="col-md-4">
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form  action="{% url 'search'%}" role="search" class="form-inline  my-2 my-lg-0">
-              <input id="searchUp" class="form-control mr-sm-2" name="user" type="search" placeholder="Search" aria-label="Search">
+            <form  action="" role="search" class="form-inline  my-2 my-lg-0">
+              <input id="searchUp" class="form-control mr-sm-2" name="project" type="search" placeholder="Search" aria-label="Search">
             </form>
     
           </div>
     
         </div>
       <ul class="navbar-nav ml-auto nav-flex-icons">
-            <a class="dropdown-item" href="{% url 'myprofile'%}">Profile</a>
-            <a href="/accounts/password/change">Change Password</a>
-            <a class="dropdown-item" href="/accounts/login">Logout</a>
+            <a class="dropdown-item" href="">Profile</a>
+            <a href="">Change Password</a>
+            <a class="dropdown-item" href="">Logout</a>
           </div>
         </li>
       </ul>
