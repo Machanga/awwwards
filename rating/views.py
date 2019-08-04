@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
-
+from .models import Project, Profile, ratings
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
 
+@login_required(login_url='/accounts/login/')
 def search_results(request):
 
     if 'project' in request.GET and request.GET["project"]:
