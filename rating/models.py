@@ -22,6 +22,11 @@ class Project(models.Model):
     description = models.CharField(max_length=1000)
     link = models.URLField(max_length=200)
 
+    @classmethod
+    def search_by_title(cls,search_term):
+        project = cls.objects.filter(title__icontains=search_term)
+        return project
+
 class Profile(models.Model):
     '''
     profile class for all the profiles that will be added to the application
