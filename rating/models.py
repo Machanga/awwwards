@@ -49,5 +49,6 @@ class Vote(models.Model):
     content = models.IntegerField(choices=CHOICES)
     project = models.ForeignKey(Project)
     profile = models.ForeignKey(Profile,on_delete=models.CASCADE,null=True)
+    
     def save_ratings(self):
         self.save()

@@ -15,7 +15,7 @@ def index(request):
         if not Profile.objects.filter(user = request.user).exists():
             return redirect('edit_profile', username=request.user.username)
     projects = Project.objects.all()
-    return render(request, 'index.html')
+    return render(request, 'index.html', {"projects":projects})
 
 @login_required(login_url='/accounts/login/')
 def search_results(request):
