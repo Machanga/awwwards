@@ -15,9 +15,9 @@ An instagram clone application where a user can sign up and post and also view o
 
 ## Setup
 ## Requirements
-python3.6
-pip
-Virtual environment(virtualenv)
+1. python3.6
+2. pip
+3. Virtual environment(virtualenv)
 ## Setup
 Clone the application using git clone(this copies the app onto your device). In your terminal:
 ```
@@ -32,9 +32,9 @@ $ source virtual/bin/activate
 (virtual)$ pip install -r requirements.txt
 ```
 ## Technologies
-Python 3.6
-Django 1.1
-Bootstrap 3
+1. Python 3.6
+2. Django 1.1
+3. Bootstrap 3
 
 ## Known bugs
 There are no known bugs as of now.
