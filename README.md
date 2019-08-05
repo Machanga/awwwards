@@ -7,6 +7,7 @@ This is an application where a user can view, post and rate other projects poste
 An instagram clone application where a user can sign up and post and also view other users, follow them and like and omment on their posts
 
 ## Link to live site
+https://awards-flow.herokuapp.com/
 
 ## BDD
 |Behaviour	                            |Input	                         |Output                                       |
