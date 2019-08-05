@@ -1,5 +1,6 @@
 from django import forms
-from .models import Project, Profile
+from .models import Project, Profile, Vote
+from django.contrib.auth.models import User
 
 class NewProjectForm(forms.ModelForm):
     class Meta:
@@ -10,3 +11,8 @@ class EditProfile(forms.ModelForm):
     class Meta:
         model=Profile
         fields = ('profpic', 'bio', 'contact')
+
+class VoteForm(ModelForm):
+    class Meta:
+        model = Vote
+        exclude = ['project','profile']
