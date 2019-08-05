@@ -29,8 +29,8 @@ Create and activate your virtual environment:
 ```
 $ python3.6 -m venv
 $ source virtual/bin/activate
-(virtual)$ pip install -r requirements.txt```
-
+(virtual)$ pip install -r requirements.txt
+```
 ## Technologies
 Python 3.6
 Django 1.1
