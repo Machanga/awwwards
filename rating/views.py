@@ -38,6 +38,23 @@ def profile(request,username):
     projects = Project.objects.filter(profile=profile)
     return render(request,'profile.html',{"profile":profile,"projects":projects})
 
+def edit_profile(request,username):
+    current_user = request.user
+    if request.method == 'POST':
+        form = EditProfile(request.POST,request.FILES)
+        if form.is_valid():
+            bio = form.save(commit=False)
+            bio.user = current_user
+            bio.save()
+        return redirect('profile',username=current_user.username)
+    elif Profile.objects.filter(user=current_user).exists():
+        profile = Profile.objects.get(user=current_user)
+        form = EditProfile(instance=profile)
+    else:
+        form = EditProfile()
+
+    return render(request,'edit.html',{"form":form})
+
 @login_required(login_url='/accounts/login/')
 def post_project(request):
     current_user = request.user
