@@ -18,11 +18,12 @@ class Project(models.Model):
     '''
     project class for all the projects that will be added to the application
     '''
-    title = models.CharField(max_length=30)
-    image = models.ImageField(upload_to='images/')
-    description = models.CharField(max_length=1000)
-    link = models.URLField(max_length=200)
-    user=models.ForeignKey(User,null=True,on_delete=models.CASCADE)
+    title = models.CharField(max_length = 60)
+    image = models.ImageField(upload_to = 'images/',blank=True)
+    description = models.TextField()
+    url = models.URLField(max_length = 40)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    profile = models.ForeignKey('Profile',on_delete=models.CASCADE,null=True)
 
     def save_project(self):
         self.save()
@@ -33,13 +34,11 @@ class Project(models.Model):
         return project
 
 class Profile(models.Model):
-    '''
-    profile class for all the profiles that will be added to the application
-    '''
-    profpic = models.ImageField(upload_to='profile/')
-    bio = models.CharField(max_length = 500)
-    projects = models.ForeignKey(Project)
-    contact = models.CharField(max_length=100)
+    profpic = models.ImageField(upload_to = 'images/')
+    bio = models.TextField()
+    contact = models.CharField(max_length = 40)
+    projects = models.ManyToManyField(Project,blank=True,related_name='profile_projects')
+    user = models.OneToOneField(User,on_delete=models.CASCADE,)
 
     def save_profile(self):
         self.save()
@@ -49,7 +48,6 @@ class ratings(models.Model):
     usability = models.IntegerField(choices=CHOICES)
     content = models.IntegerField(choices=CHOICES)
     project = models.ForeignKey(Project)
-    user=models.ForeignKey(User,on_delete=models.CASCADE)
-
+    profile = models.ForeignKey(Profile,on_delete=models.CASCADE,null=True)
     def save_ratings(self):
         self.save()
