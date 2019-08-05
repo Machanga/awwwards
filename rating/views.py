@@ -1,13 +1,13 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from .forms import NewProjectForm,VoteForm,ProfileForm
+from .forms import NewProjectForm,VoteForm,EditProfile
 from .models import Project,Vote,Profile
 from django.contrib.auth.models import User
 from django.db.models import Avg
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from .serializer import ProjectSerializer,ProfileSerializer
+# from rest_framework.response import Response
+# from rest_framework.views import APIView
+# from .serializer import ProjectSerializer,ProfileSerializer
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
