@@ -1,31 +1,32 @@
-{% extends 'base.html'%}
+{% include 'base.html'%}
 {% load bootstrap3 %}
 {% load static %}
 {% block content %}
-    <div >
-            <div >
-                <h1 class="font-weight-bold"><strong>{{project.title}}</strong></h1>
-                <img src="{{project.image.url}}"  alt="">
-      
-                <div class="col-md-6">
-                <p class="text-center" style="padding-left: 120px; padding-right: 120px;">{{project.description}} <br> <a href="{{project.url}}" class="btn btn-success" style="margin-top: 30px;">Visit Site</a> <button class="btn btn-success" style="margin-top: 30px;" data-toggle="modal" data-target="#voteModal">Vote</button></p>
-                </div>
-                </div col-md-6>
+    <div class="jumbotron header-jumbotron" style="background">
+        <div class="overlay">
+            <div class="jumbotron-text" style="text-align:center">
+                <h1 class="font-weight-bold">{{project.title}}</h1>
                 <svg width="130" height="130">
                   <circle cx="65" cy="65" r="60" fill-opacity="0" stroke="#90EE90" stroke-width="3" />
                   <text x="50%" y="50%" text-anchor="middle" fill="white" font-size="50px" font-family="Arial" dy=".3em">{{vote_average}}</text>
                 </svg>
-                </div>
-                </div>
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="text-center" style="padding-left: 120px; padding-right: 120px;">{{project.description}} <br> <a href="{{project.url}}" class="btn btn-success" style="margin-top: 30px;" target="_blank">Live site</a> <button class="btn btn-success" style="margin-top: 30px;" data-toggle="modal" data-target="#voteModal">Vote</button></p>
+            </div>
+        </div>
+    </div>
+    <hr>
     <div class="modal" id="voteModal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Vote</h5>
-            <button type="button" class="close" data-dismiss="modal">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
