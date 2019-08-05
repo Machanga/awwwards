@@ -62,12 +62,16 @@ def post_project(request):
         form = NewProjectForm(request.POST,request.FILES)
 
         if form.is_valid():
-            project = form.save(commit=False)
+            title = form.cleaned_data['title']
+            image = request.FILES['image']
+            url = form.cleaned_data['url']
+            description = form.cleaned_data['description']
+            project = Project(title = title, image = image, url = url, description = description, user = current_user)
             project.save()
         return redirect(reverse('index'))
     else:
         form = NewProjectForm()
-    return render(request,'project.html',{'form':form})
+    return render(request,'new_project.html',{'form':form})
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
