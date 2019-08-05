@@ -73,6 +73,29 @@ def post_project(request):
         form = NewProjectForm()
     return render(request,'new_project.html',{'form':form})
 
+def project(request,id):
+    current_user = request.user
+    project = Project.objects.get(pk=id)
+    votes = Vote.objects.filter(project=project)
+    profile = Profile.objects.get(user=request.user)
+    vote_average = Vote.objects.filter(project=project).aggregate(Avg('design'),Avg('usability'),Avg('content'))
+    try:
+        total_vote_average = round(numpy.mean([vote_average['design__avg'],vote_average['usability__avg'],vote_average['content__avg']]),2)
+    except:
+        total_vote_average = 0
+    if request.method == 'POST':
+        form = VoteForm(request.POST)
+        if form.is_valid():
+            design = form.cleaned_data['design']
+            usability = form.cleaned_data['usability']
+            content = form.cleaned_data['content']
+            vote = Vote(project=project, design = design,usability=usability,content=content,profile=profile)
+            vote.save()
+            return redirect('project',project.id)
+    else:
+        form = VoteForm()
+    return render(request,'project.html',{"project":project,"form":form,"votes":votes,"vote_average":total_vote_average})
+
 @login_required(login_url='/accounts/login/')
 def profile(request):
     profile = Profile.objects.filter(user = request.user).first()
