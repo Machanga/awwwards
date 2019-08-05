@@ -1,24 +1,35 @@
-{% extends 'base.html' %}
+{% include 'base.html' %}
 {% load bootstrap3 %}
+{% load static%}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
 {% block content %}
-<div class="container-fluid">
-  <h3 class="text-center header">Projects</h3>
-  <hr class="text-muted">
-  <div class="projects row">
-    {% for project in projects %}
-    <div class=" col-md-3">
-      <img class="landing-page" src="{{project.image.url}}" alt="project landing page">
-      <div class="project-text">
-        <h3 class="text-center">{{title}}</h3>
-        <div class="d-flex justify-content-between">
-          <a href="{% url 'project' project.pk %}" class="btn">View details</a>
-          <a target="_blank" href="{{project.link}}" class="btn">Visit Site</a>
+    <div class="container">
+        <div class="row heading">
+            <div class="col-md-12">
+                <h1 style="text-align:center">Projects</h1>
+            </div>
         </div>
-        <p class="text-center">By: <span>{{project.user.username}}</span></p>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
+        <div class="row">
+            {% for project in projects %}
+                    <div class="col-md-4">
+                        <div class="card">
+                            <a href="{% url 'project' project.id %}"><img src="{{project.image.url}}" style="height:300px; width:100%;" alt=""></a>
+                            <div class="card-body">
+                                <h6>{{project.title}}</h6>
+                                <hr>
+                                <div class="media" style="background-color:white;">
+                                    <img src="{{project.profile.profile_photo.url}}" class="mr-3 rounded-circle" width="25px" height="25px">
+                                    <div class="media-body">
+                                      <button><a href="{% url 'project' project.id %}">View more</a></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+        </div>
 
-</div>
+    </div>
 {% endblock %}

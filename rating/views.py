@@ -95,17 +95,3 @@ def project(request,id):
     else:
         form = VoteForm()
     return render(request,'project.html',{"project":project,"form":form,"votes":votes,"vote_average":total_vote_average})
-
-@login_required(login_url='/accounts/login/')
-def profile(request):
-    profile = Profile.objects.filter(user = request.user).first()
-    projects = Project.objects.filter(user=profile.user).all()
-
-    if request.method == 'POST':
-        form = EditProfile(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-        return redirect(reverse('profile'))
-    else:
-        form = EditProfile()
-    return render(request,'profile.html',{'form':form})
