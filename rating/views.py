@@ -3,6 +3,8 @@ from django.http import HttpResponse, Http404
 from .models import Project, Profile, ratings
 from django.contrib.auth.decorators import login_required
 from .forms import NewProjectForm
+from django.urls import reverse
+from django.contrib.auth.models import User
 # Create your views here.
 def index(request):
     projects = Project.objects.all()
@@ -35,3 +37,17 @@ def post_project(request):
     else:
         form = NewProjectForm()
     return render(request,'project.html',{'form':form})
+
+@login_required(login_url='/accounts/login/')
+def profile(request):
+    profile = Profile.objects.filter(user = request.user).first()
+    projects = Project.objects.filter(user=profile.user).all()
+
+    if request.method == 'POST':
+        form = EditProfile(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        return redirect(reverse('profile'))
+    else:
+        form = EditProfile()
+    return render(request,'profile.html',{'form':form})

@@ -1,36 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
- <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-    <div class="col-sm-2 col-md-2">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="{% url 'index' %}">Awwwards</a>
-      </div>
-    </div>
-      <!-- Adding a search form  -->
-      <div class="col-md-4">
+<nav class="navbar navbar-expand-lg navbar-light sticky-top header" style="background-color: #19caaf">
+<div class="container">
+<div class="row">
+<div class="col-md-2">
+  <a class="navbar-brand logo" href="/">Awwwards</a>
+</div>
+  <div class="col-md-2" id="navbarSupportedContent-333">
+  <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
 
-        <form class="navbar-form" role="search" action="{% url 'search_results' %}">
-
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search" name="project">
-            <div class="input-group-btn">
-              <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </div>
-          </div>
-
+          <a class="nav-link" href="{%url 'new_project'%}">Post
+          </a>
+        </li>
+      </ul>
+  </div>
+    <div class="col-md-5">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form  action="{%url 'search'%}" role="search" class="form-inline  my-2 my-lg-0">
+          <input id="search" type="text" class="form-control input-lg" placeholder="Search Project" name="search" />
         </form>
-      </div>
-      <!-- search form end -->
-      <button><a class="nav-link" href="{% url 'post_project'%}">Post
-          </a></button>
-    <div class="col-sm-6 col-md-6 navbar-right">
+    </div>
+  </div>
+  <div class="col-sm-3 col-md-3 navbar-right">
             {% if user.is_authenticated %}
             
             <ul>
@@ -58,8 +54,6 @@
 
             {% endif %}
           </div>
-
-    </div>
-  </nav>
-</body>
-</html>
+</div>
+</div>
+</nav>

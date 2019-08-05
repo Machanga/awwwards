@@ -22,7 +22,10 @@ class Project(models.Model):
     image = models.ImageField(upload_to='images/')
     description = models.CharField(max_length=1000)
     link = models.URLField(max_length=200)
-    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    user=models.ForeignKey(User,null=True,on_delete=models.CASCADE)
+
+    def save_project(self):
+        self.save()
 
     @classmethod
     def search_by_title(cls,search_term):
@@ -38,9 +41,15 @@ class Profile(models.Model):
     projects = models.ForeignKey(Project)
     contact = models.CharField(max_length=100)
 
+    def save_profile(self):
+        self.save()
+
 class ratings(models.Model):
     design=models.IntegerField(choices=CHOICES)
     usability = models.IntegerField(choices=CHOICES)
     content = models.IntegerField(choices=CHOICES)
     project = models.ForeignKey(Project)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
+
+    def save_ratings(self):
+        self.save()
