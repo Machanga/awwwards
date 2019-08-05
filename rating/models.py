@@ -43,7 +43,7 @@ class Profile(models.Model):
     def save_profile(self):
         self.save()
 
-class ratings(models.Model):
+class Vote(models.Model):
     design=models.IntegerField(choices=CHOICES)
     usability = models.IntegerField(choices=CHOICES)
     content = models.IntegerField(choices=CHOICES)

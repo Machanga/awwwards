@@ -1,4 +1,4 @@
-from django import forms
+from django.forms import ModelForm
 from .models import Project, Profile, Vote
 from django.contrib.auth.models import User
 
